@@ -1,5 +1,10 @@
+html, body {
+  height: 99%;
+  padding: 0;
+}
+
 body {
-  font-family: 'Ubuntu', sans-serif;
   margin: 0 auto;
+  font-family: 'Ubuntu', sans-serif;
   background-color: #d6d6d6;
 }
