@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { getAll, update } from '../../api/BooksAPI';
-import { Shelf, PageContainer } from '../../components';
+import { Shelf, PageContainer, Loader } from '../../components';
 import { CURRENTLY_READING, WANT_TO_READ, READ } from '../../utils/states';
-
-import ReactLoading from 'react-loading';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  top: 50%;
-  left: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
-`
 
 class Home extends Component {
   state = {
@@ -56,9 +46,7 @@ class Home extends Component {
   renderLoading() {
     return (
       <PageContainer>
-        <Wrapper>
-          <ReactLoading type="spin" color="#000000" height={64} width={64} delay={.5}/>
-        </Wrapper>
+        <Loader />
       </PageContainer>
     )
   }
