@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { getAll, update } from '../../api/BooksAPI';
+import { getAll } from '../../api/BooksAPI';
 import { Shelf, PageContainer, Loader } from '../../components';
+
 import { CURRENTLY_READING, WANT_TO_READ, READ } from '../../utils/states';
+import { updateBook, transformBook } from '../../utils/book';
 
 class Home extends Component {
   state = {
@@ -14,33 +16,24 @@ class Home extends Component {
   }
 
   getAllBooks() {
-    getAll().then(books => {
-      this.setState({ loading: false, books });
-    });
+    getAll().then(books => this.setState({ loading: false, books }));
   }
 
   updateBook(book, shelf) {
-    const updatePromise = update(book, shelf);
+    const updatePromise = updateBook(book, shelf);
 
-    this.updateShelves(this.transformBook(book, shelf));
+    this.updateShelves(transformBook(book, shelf));
 
     return updatePromise;
-  }
-
-  // TODO: might need a better name;
-  transformBook(book, shelf) {
-    return { ...book, shelf };
-  }
+  };
 
   updateShelves(updatedBook) {
-    this.setState(previousState => {
-      return {
-        books: [
-          ...previousState.books.filter(book => book.id !== updatedBook.id),
-          updatedBook
-        ]
-      };
-    });
+    this.setState(previousState => ({
+      books: [
+        ...previousState.books.filter(book => book.id !== updatedBook.id),
+        updatedBook
+      ]
+    }));
   }
 
   renderLoading() {
@@ -62,9 +55,9 @@ class Home extends Component {
 
     const shelves = [
       { color: CURRENTLY_READING.color, title: CURRENTLY_READING.display, books: currentlyReading },
-      { color: WANT_TO_READ.color, title: WANT_TO_READ.display , books: wantToRead },
+      { color: WANT_TO_READ.color, title: WANT_TO_READ.display, books: wantToRead },
       { color: READ.color, title: READ.display, books: read },
-    ]
+    ];
 
     return (
       <PageContainer>
