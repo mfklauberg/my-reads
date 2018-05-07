@@ -1,31 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Book } from '..';
+import { Book, Title } from '..';
 
 const ShelfWrapper = styled.div`
   display: flex;
   margin-left: 8px;
   flex-direction: column;
-`;
-
-const ShelfHeader = styled.div`
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: 12px;
-
-  &:after {
-    content: '';
-    height: 2px;
-    display: block;
-    margin-top: 4px;
-    margin-left: 30%;
-    margin-right: 30%;
-    background: #${props => props.color};
-  }
-`;
-
-const ShelfTitle = styled.span`
 `;
 
 const ShelfContent = styled.div`
@@ -48,9 +29,10 @@ class Shelf extends Component {
 
     return (
       <ShelfWrapper>
-        <ShelfHeader color={color}>
-          <ShelfTitle>{title}</ShelfTitle>
-        </ShelfHeader>
+        <Title
+          color={color}
+          title={title}
+        />
         <ShelfContent>
           {
             books.map(book => (
