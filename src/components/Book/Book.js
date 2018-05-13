@@ -19,6 +19,10 @@ const BookWrapper = styled.div`
 `;
 
 const BookCover = styled.img`
+  min-width: 132px;
+  min-height: 196px;
+  border-radius: 2px;
+  border: 1px solid black;
 `;
 
 const BookInfo = styled.div`
@@ -54,7 +58,7 @@ class Book extends Component {
 
   render() {
     const { book, color } = this.props;
-    const { shelf, title, authors = [], imageLinks: { thumbnail } } = book;
+    const { shelf, title, authors = [], imageLinks: { thumbnail } = { } } = book;
 
     return (
       <BookWrapper>
@@ -64,6 +68,9 @@ class Book extends Component {
           onActionClick={(state) => this.updateBook(state)}
         />
         <BookCover
+          width={'130px'}
+          height={'194px'}
+          alt="No image"
           src={thumbnail}
         />
         <BookInfo>

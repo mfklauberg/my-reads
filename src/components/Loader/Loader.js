@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactLoading from 'react-loading';
 
-const Wrapper = styled.div`
+const LoaderWrapper = styled.div`
   top: 50%;
   left: 50%;
   position: fixed;
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `;
 
 const Loader = () => (
-  <Wrapper>
+  <LoaderWrapper>
     <ReactLoading
       type="spin"
       color="#000000"
@@ -18,7 +18,7 @@ const Loader = () => (
       width={64}
       delay={.5}
     />
-  </Wrapper>
+  </LoaderWrapper>
 );
 
 export default Loader;

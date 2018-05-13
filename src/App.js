@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 import { Header } from './components';
-import { Home, About } from './screens';
+import { Home, Search } from './screens';
 
 const MyReads = styled.div`
   height: 100%;
@@ -25,9 +25,7 @@ class App extends Component {
         <Header />
         <Body>
           <Route exact path="/" component={Home} />
-          <Route path="/search" />
-          <Route path="/about" component={About} />
-          <Route path="/book/:id" />
+          <Route path="/search" component={Search}/>
         </Body>
       </MyReads>
     );

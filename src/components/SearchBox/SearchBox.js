@@ -34,7 +34,7 @@ class SearchBox extends Component {
       <SearchWrapper>
         <SearchInput
           placeholder={placeholder}
-          onChange={(event) => this.updateQuery(event)}
+          onChange={(...args) => this.updateQuery(...args)}
         />
       </SearchWrapper>
     );

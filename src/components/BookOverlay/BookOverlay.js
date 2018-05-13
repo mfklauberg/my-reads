@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import states from '../../utils/states';
 
-const Overlay = styled.div`
+const OverlayWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
@@ -20,7 +20,7 @@ const Overlay = styled.div`
   justify-content: space-evenly;
 `;
 
-const Action = styled.span`
+const OverlayAction = styled.span`
   color: ${props => props.selected ? 'yellow' : 'white'};
   cursor: pointer;
   display: inline;
@@ -38,21 +38,19 @@ class BookOverlay extends Component {
     const { shelf, color, onActionClick } = this.props;
 
     return (
-      <Overlay
-        color={color}
-      >
+      <OverlayWrapper color={color}>
         {
           Object.values(states).map(({ key, display}) => (
-            <Action
+            <OverlayAction
               key={key}
               selected={shelf === key}
               onClick={() => onActionClick(key)}
             >
               {display}
-            </Action>
+            </OverlayAction>
           ))
         }
-      </Overlay>
+      </OverlayWrapper>
     );
   }
 }

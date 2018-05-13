@@ -29,10 +29,9 @@ class Shelf extends Component {
 
     return (
       <ShelfWrapper>
-        <Title
-          color={color}
-          title={title}
-        />
+        <Title color={color}>
+          {title}
+        </Title>
         <ShelfContent>
           {
             books.map(book => (

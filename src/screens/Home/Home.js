@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { getAll } from '../../api/BooksAPI';
 import { Shelf, PageContainer, Loader } from '../../components';
 
-import { CURRENTLY_READING, WANT_TO_READ, READ } from '../../utils/states';
 import { updateBook, transformBook } from '../../utils/book';
+import { CURRENTLY_READING, WANT_TO_READ, READ } from '../../utils/states';
 
 class Home extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const HeaderWrapper = styled.div`
   width: 100%;
   display: flex;
   background: white;
@@ -49,7 +49,6 @@ class Header extends Component {
     pages: [
       { display: 'Home', route: '/' },
       { display: 'Search', route: '/search' },
-      { display: 'About', route: '/about' }
     ]
   };
 
@@ -57,13 +56,20 @@ class Header extends Component {
     const { pages } = this.state;
 
     return (
-      <Container>
+      <HeaderWrapper>
         {
           pages.map(({route, display}, index) => (
-            <StyledLink key={index} activeClassName="active" exact={true} to={route}>{display}</StyledLink>
+            <StyledLink
+              exact
+              key={index}
+              activeClassName="active"
+              to={route}
+            >
+              {display}
+            </StyledLink>
           ))
         }
-      </Container>
+      </HeaderWrapper>
     );
   }
 }

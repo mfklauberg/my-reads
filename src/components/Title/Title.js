@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const TitleWrapper = styled.div`
   text-align: center;
   margin-bottom: 12px;
 
@@ -16,18 +16,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const Text = styled.span`
+const TitleText = styled.span`
   font-size: 18px;
 `;
 
-const Title = ({ color, title }) => (
-  <Wrapper
-    color={color}
-  >
-    <Text>
-      {title}
-    </Text>
-  </Wrapper>
+const Title = ({ color, children }) => (
+  <TitleWrapper color={color}>
+    <TitleText>
+      {children}
+    </TitleText>
+  </TitleWrapper>
 );
 
 export default Title;
